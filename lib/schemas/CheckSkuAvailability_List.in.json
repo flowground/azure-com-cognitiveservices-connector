@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Check SKU availability parameter.",
+            "properties": {
+                "kind": {
+                    "description": "The Kind of the resource.",
+                    "type": "string"
+                },
+                "skus": {
+                    "description": "The SKU of the resource.",
+                    "items": {
+                        "description": "The name of SKU.",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The Type of the resource.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "skus",
+                "kind",
+                "type"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

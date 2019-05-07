@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters to provide for the account.",
+            "properties": {
+                "sku": {
+                    "description": "Gets or sets the SKU of the resource.",
+                    "properties": {
+                        "name": {
+                            "description": "Gets or sets the sku name. Required for account creation, optional for update.",
+                            "type": "string"
+                        },
+                        "tier": {
+                            "description": "Gets the sku tier. This is based on the SKU name.",
+                            "enum": [
+                                "Free",
+                                "Standard",
+                                "Premium"
+                            ],
+                            "readOnly": true,
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "SkuTier"
+                            }
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "type": "object"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
